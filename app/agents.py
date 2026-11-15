@@ -868,6 +868,7 @@ def waitlist_agent(bus, message):
                 )
 
         return {"message": "Waitlist sweep completed."}
+    
 
     raise Refusal("Unsupported WaitlistAgent action.")
 
