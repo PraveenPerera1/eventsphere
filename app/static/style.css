@@ -1,12 +1,19 @@
 :root {
-  color-scheme: light;
-  --background: #f5f7fb;
-  --surface: #ffffff;
-  --text: #182235;
-  --muted: #647087;
-  --primary: #3559ce;
-  --border: #dce2ed;
-  --danger: #a72534;
+  color-scheme: dark;
+
+  --background: #0d1117;
+  --surface: #161d29;
+  --text: #e8edf5;
+  --muted: #a8b4c7;
+  --primary: #4968dc;
+  --border: #344156;
+  --danger: #b83246;
+
+  --input-background: #101722;
+  --input-border: #52617a;
+  --secondary-background: #273349;
+  --link: #a9bcff;
+  --focus: #b5c5ff;
 }
 
 * {
@@ -39,11 +46,15 @@ body {
   gap: 16px;
 }
 
+a {
+  color: var(--link);
+}
+
 .brand {
   font-size: 1.35rem;
   font-weight: 800;
   text-decoration: none;
-  color: var(--primary);
+  color: var(--link);
 }
 
 .hero {
@@ -91,7 +102,10 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 300px), 1fr)
+  );
   gap: 20px;
 }
 
@@ -130,8 +144,8 @@ small {
   display: inline-block;
   padding: 3px 9px;
   border-radius: 20px;
-  background: #eaf0ff;
-  color: #28449d;
+  background: #263759;
+  color: #cad7ff;
   font-size: .8rem;
 }
 
@@ -146,18 +160,31 @@ button {
   border: 0;
   border-radius: 8px;
   background: var(--primary);
-  color: white;
+  color: #ffffff;
   padding: 10px 14px;
   cursor: pointer;
 }
 
+button:hover:not(:disabled) {
+  background: #3d59c4;
+}
+
 button.secondary {
-  background: #e7ecf6;
+  background: var(--secondary-background);
   color: var(--text);
+}
+
+button.secondary:hover:not(:disabled) {
+  background: #35445e;
 }
 
 button.danger {
   background: var(--danger);
+  color: #ffffff;
+}
+
+button.danger:hover:not(:disabled) {
+  background: #a02539;
 }
 
 button:disabled {
@@ -169,17 +196,40 @@ input,
 select,
 textarea {
   width: 100%;
-  border: 1px solid #bdc7d8;
-  background: white;
+  border: 1px solid var(--input-border);
+  background: var(--input-background);
+  color: var(--text);
   border-radius: 7px;
   padding: 10px;
   margin: 5px 0 12px;
   min-width: 0;
 }
 
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+
+select option {
+  background: var(--input-background);
+  color: var(--text);
+}
+
+button:focus-visible,
+a:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
 input[type="checkbox"] {
   width: auto;
   margin-right: 7px;
+  accent-color: var(--primary);
 }
 
 textarea {
@@ -195,7 +245,10 @@ label {
 
 .form-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100%, 230px), 1fr)
+  );
   gap: 0 16px;
 }
 
@@ -205,7 +258,7 @@ label {
 
 .ticket {
   padding: 16px;
-  border: 1px dashed #b2bdd1;
+  border: 1px dashed #576780;
   border-radius: 8px;
   margin: 12px 0;
 }
@@ -214,10 +267,14 @@ label {
   display: block;
   width: 180px;
   max-width: 100%;
+
+  /* Keep QR codes on a white background. */
+  background: #ffffff;
 }
 
 code {
   overflow-wrap: anywhere;
+  color: #c8d6ff;
 }
 
 #notice {
@@ -226,15 +283,17 @@ code {
   z-index: 10;
   padding: 16px;
   margin-bottom: 20px;
-  background: #e6f4ea;
-  border: 1px solid #95c4a5;
+  background: #15382b;
+  color: #d3f5df;
+  border: 1px solid #438b66;
   border-radius: 10px;
   overflow-wrap: anywhere;
 }
 
 #notice.error {
-  background: #fff0f0;
-  border-color: #e1a5a5;
+  background: #451f2a;
+  color: #ffdde3;
+  border-color: #bd6576;
 }
 
 .table-wrap {
@@ -254,11 +313,17 @@ td {
   vertical-align: top;
 }
 
+th {
+  background: #202b3d;
+  color: #f0f4fc;
+}
+
 pre {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   max-width: 100%;
   font-size: .8rem;
+  color: #c8d6ff;
 }
 
 details {
@@ -268,6 +333,15 @@ details {
 summary {
   cursor: pointer;
   font-weight: 700;
+}
+
+summary::marker {
+  color: var(--link);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
 }
 
 #reader {

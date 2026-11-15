@@ -13,19 +13,19 @@ passwords = PasswordHash.recommended()
 def main():
     accounts = [
         (
-            "admin@eventsphere.test",
+            "admin@organization.co",
             "Demo Admin",
             "admin",
             os.getenv("DEMO_ADMIN_PASSWORD", ""),
         ),
         (
-            "staff@eventsphere.test",
+            "staff@organization.co",
             "Demo Gate Staff",
             "staff",
             os.getenv("DEMO_STAFF_PASSWORD", ""),
         ),
         (
-            "attendee@eventsphere.test",
+            "attendee@organization.co",
             "Demo Attendee",
             "attendee",
             os.getenv("DEMO_ATTENDEE_PASSWORD", ""),
